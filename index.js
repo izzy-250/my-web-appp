@@ -2,8 +2,13 @@
 const port = 3000;
 
 const server = http.createServer((req, res) => {
-  res.writeHead(200, { "Content-Type": "text/plain" });
-  res.end("Hello, this is a basic web app!\n");
+  if (req.url === "/auth") {
+    res.writeHead(200, { "Content-Type": "text/plain" });
+    res.end("User authentication endpoint active\n");
+  } else {
+    res.writeHead(200, { "Content-Type": "text/plain" });
+    res.end("Hello, this is a basic web app!\n");
+  }
 });
 
 server.listen(port, () => {
